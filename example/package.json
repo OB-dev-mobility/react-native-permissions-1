@@ -1,23 +1,24 @@
 {
-  "name": "Example",
+  "name": "react-native-permissions-example",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "clean-modules": "rm -rf ./node_modules/react-native-permissions/{example,node_modules}",
+    "clean": "rm -rf ./node_modules ./ios/Pods",
+    "postinstall": "yarn clean-modules && yarn pod-install",
+    "pod-install": "cd ./ios && pod install && cd ..",
+    "start": "react-native start",
+    "reinstall": "yarn clean && yarn install"
   },
   "dependencies": {
-    "react": "16.0.0",
-    "react-native": "0.50.3",
-    "react-native-permissions": "../"
+    "@react-native-community/async-storage": "1.5.1",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-native-permissions": "file:../"
   },
   "devDependencies": {
-    "babel-jest": "21.2.0",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "21.2.1",
-    "react-test-renderer": "16.0.0"
-  },
-  "jest": {
-    "preset": "react-native"
+    "@babel/core": "7.6.0",
+    "@babel/runtime": "7.6.0",
+    "metro-react-native-babel-preset": "0.56.0"
   }
 }
